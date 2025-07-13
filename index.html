@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome by Zaijan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #1f1c2c, #928dab);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+    .container {
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: black;
+    }
+    video {
+      width: 100%;
+      max-width: 500px;
+      margin-top: 15px;
+      border-radius: 10px;
+    }
+    .closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      cursor: pointer;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome by Zaijan</h1>
+    <button id="openBtn">Click Me</button>
+  </div>
+
+  <div id="messagePopup" class="popup">
+    <span class="closeBtn" id="closeBtn">&times;</span>
+    <div class="popup-content">
+      <p>Miss mo?</p>
+      <video id="banatVideo" controls>
+        <source src="miss.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById('openBtn');
+    const popup = document.getElementById('messagePopup');
+    const closeBtn = document.getElementById('closeBtn');
+    const video = document.getElementById('banatVideo');
+
+    openBtn.onclick = () => {
+      popup.style.display = 'flex';
+      video.currentTime = 0;
+      video.play();
+    };
+
+    closeBtn.onclick = () => {
+      popup.style.display = 'none';
+      video.pause();
+    };
+
+    window.onclick = (e) => {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+        video.pause();
+      }
+    };
+  </script>
+</body>
+</html>
